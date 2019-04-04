@@ -3,15 +3,15 @@ library(gam)
 library(car)
 
 list_rec2=list.files("/Users/stijnhantson/Documents/projects/anza_borrego/precip/clip",pattern = ".tif$", full.names=T)
-start=10
-for (year in 1986:2017){
-end = start + 47
+start=6
+for (year in 1981:2017){
+end = start + 2
 dr = stack(list_rec2[start:end])
 pri = sum(dr)
 print(start)
   start = start+12
   
-out= paste("/Users/stijnhantson/Documents/projects/anza_borrego/precip/lag_4year/",year,".tif",sep="")
+out= paste("/Users/stijnhantson/Documents/projects/anza_borrego/precip/June-aug/",year,".tif",sep="")
 writeRaster(pri,out,overwrite=T)
 }
 
